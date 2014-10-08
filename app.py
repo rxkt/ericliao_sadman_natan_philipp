@@ -9,6 +9,9 @@ def home():
 
 @app.route("/search",methods=['GET','POST'])
 def showResults():
+    results = request.args.get("input");
+    ##do stuff with results???
+    print results
     return render_template("search.html")
 
 
