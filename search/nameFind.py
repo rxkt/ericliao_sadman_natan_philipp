@@ -17,18 +17,7 @@ def nameList(content):
         words[i]=words[i].upper()
 
     firstPass = re.findall("[A-Z][A-Za-z'\-]*\s[A-Z][A-Za-z'\-]*", content)
-    fTitles = re.findall("(Mr|Mrs|Miss|Ms|Hon|Dr|Sir|Hon|Fr|Esq|King)(\.)?\s{0,1}([A-Z][A-Za-z'\-]*)?([ ][A-Z][A-Za-z'\-]*)?", content)
-    
-    titles = []
-    for word in fTitles:
-        fin = ""
-        """if word[1] == '':
-word[1] = ' '"""
-        for part in word:
-            fin += part
-        titles.append(fin)
- 
-    firstPass.extend(titles)
+
     secondPass = []
     for word in firstPass:
         if "--" in word:
@@ -54,14 +43,36 @@ word[1] = ' '"""
     for name in names:
         totalNames = totalNames + names[name]
         
-    keys=names.keys()
-    vals=names.values()
-
-    #print keys
-    #print vals
-
-    names={v:k for k,v in names.items()}
-    print names
+    return names
     
+def addDicts (dict1, dict2):
+	dict3 = {}
+	for name in dict1.keys():
+		dict3[name] = dict1[name]
+	for name in dict2.keys():
+		if name in dict3.keys():
+			dict3[name] = dict3[name]+dict2[name]
+		else:
+			dict3[name] = dict2[name]
+	return dict3
 
-nameList(test)
+def percentDict(names):
+	total = 0.0
+	for name in names:
+		total = total + names[name]
+	for name in names:
+		names[name] = names[name]/total
+	names={v:k for k,v in names.items()}
+	return names
+
+def mostCommon(names):
+	highest=0.0
+	name=""
+	for percent in names:
+		if percent>highest:
+			highest=percent
+			name=names[percent]
+	return {name:highest}
+
+perc=percentDict(nameList(test))
+print mostCommon(perc)
