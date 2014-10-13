@@ -15,7 +15,8 @@ def getNames(urls):
 		final = nameFind.addDicts(final,names)
 	return final
 
-pages=getPages("Who played Spiderman?")
-names=getNames(pages)
-prcnt=nameFind.percentDict(names)
-print nameFind.mostCommon(prcnt)
+if __name__ == "main":
+    pages=getPages("Who played Spiderman?")
+    names=getNames(pages)
+    prcnt=nameFind.percentDict(names)
+    print nameFind.mostCommon(prcnt)
