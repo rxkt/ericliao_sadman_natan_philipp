@@ -1,0 +1,22 @@
+p{
+    border:8px solid);
+    border-style: double;
+    border-radius: 15px;
+    padding:20px;
+    width:700px;
+}
+
+.search,
+.lucky{
+    color: white;
+    border-radius: 8px;
+    text-shadow 0 1px 1px rgba(0,0,0,0.2);
+}
+
+.search{
+    background: rgb(66,184,221);
+}
+
+.lucky{
+    background: rgb(100,100,100);
+}

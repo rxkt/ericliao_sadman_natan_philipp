@@ -8,19 +8,15 @@
       </font>
       <form class="pure-form" method="get" action="/search">
 
-	<input class="pure-input-rounded" type="text" size=40 name="input" placeholder="                  What would you like to know?" required></input><br><br>
+	<input class="pure-input-rounded" type="text" size=40 name="query" placeholder="                  What would you like to know?" required></input><br><br>
 
 
 	<div>
-	  <style scoped>
-	  </style>
+	  <style scoped></style>
 	<button class = "grow search pure-button" type="submit" name="submit"><i class = "fa fa-search"></i> Search</button><br><br>
 	<!-- if request.args.lucky exists-->
-	{{ resultsType }}<br>
-    Results:<br>
-    {{ results }}
-	<!-- just to test if the string passes-->
-	
+	<button class = "lucky pure-button" type="submit" name="lucky"><i class = "fa fa-arrow-circle-up fa-spin"></i> HAVE FAITH  <i class = "fa fa-arrow-circle-up fa-spin"></i> </button>
+
 	</div>
       </form>
   </center>
