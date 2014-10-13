@@ -8,7 +8,7 @@ NUM_GOOGLE_RESULTS = 3
 def query(searchStr):
     pages = getPages(searchStr)
     names = parsePages(pages)
-    return names
+    return searchHelper.mostCommon(names)
 
 # Searches Google for query
 def getPages(query):

@@ -102,7 +102,5 @@ def mostCommon(names):
 		if percent > highest:
 			highest = percent
 			name = names[percent]
-	return (name, highest)
+	return name
 
-#perc=percentDict(nameList(test))
-#print mostCommon(perc)

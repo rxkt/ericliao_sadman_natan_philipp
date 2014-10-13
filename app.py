@@ -22,16 +22,16 @@ def showResults():
 
     # utilize dictionary to create a string
     # based on the type of search
-    for element in request.args.keys():
-        if element=="submit":
-            resultsType = "submit"
-        elif element=="lucky":
-            # i'm feeling lucky mode-- display the one most
+    #for element in request.args.keys():
+    #    if element=="submit":
+    #        resultsType = "submit"
+    #    elif element=="lucky":
+    #        # i'm feeling lucky mode-- display the one most
             # important/occuring answer
-            resultsType = "lucky"
+    #        resultsType = "lucky"
 
     # template gets two parameters: results (dict name:freq), resultsType (submit or lucky)
-    return render_template("search.html", results = results, resultsType = resultsType)
+    return render_template("search.html", results = results, searchStr = searchStr)
 
 
 if __name__ == "__main__":
