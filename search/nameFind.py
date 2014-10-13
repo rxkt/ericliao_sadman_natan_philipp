@@ -1,8 +1,8 @@
 import re
 
-fi = open("test/nick.txt","r")
-test = fi.read()
-fi.close()
+#fi = open("test/nick.txt","r")
+#test = fi.read()
+#fi.close()
 
 def nameList(content):
     
@@ -74,5 +74,5 @@ def mostCommon(names):
 			name=names[percent]
 	return {name:highest}
 
-perc=percentDict(nameList(test))
-print mostCommon(perc)
+#perc=percentDict(nameList(test))
+#print mostCommon(perc)
