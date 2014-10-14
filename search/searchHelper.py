@@ -45,6 +45,17 @@ def extractNames(content):
         
     return names
 
+def extractDates(content):
+	firstPass = re.findall("(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|Jun(e)?|Jul(y)?|Aug(ust)?|(Sep|Nov|Dec)(ember)?|Oct(ober)) [0-9]{0,4}(st|nd|rd|th)?,?( [0-9]{0,4})?", content)
+	dates={}
+	for word in firstPass:
+		if word not in dates:
+			dates[word[0]+word[-1]]=0
+		dates[word[0]+word[-1]] = dates[word[0]+word[-1]]+1
+
+	return dates
+
+
 # These are the results from one page. We're artificially changing the frequency.
 # Say we have five pages, and gradient = 0.1. Their results will be weighted like this:
 # #1 1.2

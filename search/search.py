@@ -8,7 +8,7 @@ NUM_GOOGLE_RESULTS = 3
 # Main function
 def query(searchStr):
     pages = getPages(searchStr)
-    names = parsePages(pages)
+    names = parsePages(pages,searchStr.split(" ")[0])
     return searchHelper.mostCommon(names)
 
 # Searches Google for query
@@ -19,7 +19,7 @@ def getPages(query):
     return urls
 
 # Analyze results
-def parsePages(urls):
+def parsePages(urls,keyWord):
     # For example, {"Zeus":500, "Jupiter": 366}
     namesByFrequency = {}
 
@@ -29,7 +29,10 @@ def parsePages(urls):
             html = google.get_page(url)
         except:
             continue
-        namesInThisPage = searchHelper.extractNames(html)
+	if(keyWord.upper() == "WHEN"):
+		namesInThisPage = searchHelper.extractDates(html)
+	else:
+        	namesInThisPage = searchHelper.extractNames(html)
         namesInThisPage = searchHelper.weightNames(namesInThisPage, index, NUM_GOOGLE_RESULTS)
         namesByFrequency = searchHelper.addDicts(namesByFrequency, namesInThisPage)
 
