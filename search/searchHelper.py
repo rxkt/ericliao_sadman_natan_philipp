@@ -1,4 +1,5 @@
 import re
+import wikipedia
 
 #fi = open("test/nick.txt","r")
 #test = fi.read()
@@ -80,6 +81,14 @@ def weightNames(namesByFrequency, index, total):
 
     return namesByFrequency
 
+def fetchBiography(name):
+    if "ALEX TREBEK" in " ".join(name):
+        return "Who is Alex Trebek?"
+    
+    try:
+        return wikipedia.summary(" ".join(name), sentences = 2)
+    except wikipedia.exceptions.DisambiguationError:
+        return False
     
 def addDicts (dict1, dict2):
 	dict3 = {}

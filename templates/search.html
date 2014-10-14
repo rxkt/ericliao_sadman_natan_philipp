@@ -8,18 +8,16 @@
       </font>
       <form class="pure-form" method="get" action="/search">
 
-	<input class="pure-input-rounded" type="text" size=40 name="query" placeholder="                  What would you like to know?" required></input><br><br>
+	<input class="pure-input-rounded" type="text" size=40 name="query" placeholder="What would you like to know?" required></input><br><br>
 
 
 	<div>
 	  <style scoped>
 	  </style>
 	<button class = "grow search pure-button" type="submit" name="submit"><i class = "fa fa-search"></i> Search</button><br><br>
-	<!-- if request.args.lucky exists-->
 	<!-- {{ resultsType }}<br>-->
-    <font size=6 color="salmon">{{ searchStr }}</font><br><br>
-    <font size=8 color="salmon"><b>{{ results }}</b></font>
-	<!-- just to test if the string passes-->
+    <p class="question">{{ searchStr }}</p>
+    <p class="answer {$ if results | length > 100 %} long-answer %}">{{ results }}</p>
 	
 	</div>
       </form>

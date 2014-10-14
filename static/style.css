@@ -1,4 +1,5 @@
-p{
+/*
+p {
     border:8px solid);
     border-style: double;
     border-radius: 15px;
@@ -19,4 +20,27 @@ p{
 
 .lucky{
     background: rgb(100,100,100);
+}
+*/
+
+body {
+    background-color: azure;
+    padding: 10px 20%;
+}
+
+.question {
+    color: salmon;
+    font-size: 24px
+}
+
+.answer {
+    color: salmon;
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: 60px;
+    line-height: 1.4;
+}
+
+.long-answer {
+    font-size: 24px
 }

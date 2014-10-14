@@ -8,7 +8,16 @@ NUM_GOOGLE_RESULTS = 3
 # Main function
 def query(searchStr):
     pages = getPages(searchStr)
-    names = parsePages(pages,searchStr.split(" ")[0])
+
+    # "Who played Chase" becomes ["WHO", "PLAYED", "CHASE"]
+    wordsInQuery = [word.upper() for word in searchStr.split(" ")]
+    if len(wordsInQuery) >= 3:
+        if wordsInQuery[0] + wordsInQuery[1] == "WHOIS" or wordsInQuery[0] + wordsInQuery[1] == "WHOWAS":
+            biography = searchHelper.fetchBiography(wordsInQuery[2:])
+            if biography:
+                return biography
+
+    names = parsePages(pages, wordsInQuery)
     return searchHelper.mostCommon(names)
 
 # Searches Google for query
@@ -19,7 +28,7 @@ def getPages(query):
     return urls
 
 # Analyze results
-def parsePages(urls,keyWord):
+def parsePages(urls, wordsInQuery):
     # For example, {"Zeus":500, "Jupiter": 366}
     namesByFrequency = {}
 
@@ -29,10 +38,12 @@ def parsePages(urls,keyWord):
             html = google.get_page(url)
         except:
             continue
-	if(keyWord.upper() == "WHEN"):
-		namesInThisPage = searchHelper.extractDates(html)
-	else:
-        	namesInThisPage = searchHelper.extractNames(html)
+
+        if wordsInQuery[0] == "WHEN":
+            namesInThisPage = searchHelper.extractDates(html)
+        elif wordsInQuery[0] == "WHO":
+            namesInThisPage = searchHelper.extractNames(html)
+
         namesInThisPage = searchHelper.weightNames(namesInThisPage, index, NUM_GOOGLE_RESULTS)
         namesByFrequency = searchHelper.addDicts(namesByFrequency, namesInThisPage)
 
