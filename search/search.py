@@ -41,7 +41,7 @@ def parsePages(urls, wordsInQuery):
 
         if wordsInQuery[0] == "WHEN":
             namesInThisPage = searchHelper.extractDates(html)
-        elif wordsInQuery[0] == "WHO":
+        else:
             namesInThisPage = searchHelper.extractNames(html)
 
         namesInThisPage = searchHelper.weightNames(namesInThisPage, index, NUM_GOOGLE_RESULTS)

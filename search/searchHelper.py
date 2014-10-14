@@ -86,7 +86,7 @@ def fetchBiography(name):
         return "Who is Alex Trebek?"
     
     try:
-        return wikipedia.summary(" ".join(name), sentences = 2)
+        return wikipedia.summary(" ".join(name), sentences = 3)
     except wikipedia.exceptions.DisambiguationError:
         return False
     
