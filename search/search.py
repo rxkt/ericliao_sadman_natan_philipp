@@ -1,5 +1,6 @@
 import google
 import searchHelper
+from cookielib import CookieJar
 
 # Odd number to make weighting easier
 NUM_GOOGLE_RESULTS = 3
@@ -24,7 +25,10 @@ def parsePages(urls):
 
     # Loop through urls, remembering the index for weighting
     for index, url in enumerate(urls):
-        html = google.get_page(url)
+        try:
+            html = google.get_page(url)
+        except:
+            continue
         namesInThisPage = searchHelper.extractNames(html)
         namesInThisPage = searchHelper.weightNames(namesInThisPage, index, NUM_GOOGLE_RESULTS)
         namesByFrequency = searchHelper.addDicts(namesByFrequency, namesInThisPage)
