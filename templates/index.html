@@ -8,7 +8,7 @@
       </font>
       <form class="pure-form home-search-bar" method="get" action="/search">
 
-          <input class="pure-input-rounded search-bar" type="text" size=40 name="query" placeholder="                  What would you like to know?" required {% if searchStr is defined %} value="{{ searchStr }}" {% endif %} ></input>
+          <input class="pure-input-rounded search-bar" type="text" size=40 name="query" placeholder="                  What would you like to know?" required autofocus {% if searchStr is defined %} value="{{ searchStr }}" {% endif %} ></input>
 
     <button class = "grow search pure-button" type="submit" name="submit"><i class = "fa fa-search"></i> Search</button>
     <br>

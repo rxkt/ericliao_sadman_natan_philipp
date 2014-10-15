@@ -18,7 +18,7 @@ def showResults():
         searchStr = request.args.get("query");
     elif request.method == "POST":
         searchStr = request.form.get("query");
-
+    print "SEARCHING FOR " + searchStr
     # use search module we built to get the answer in the form of a dict, name:freq
     results = search.query(searchStr);
 

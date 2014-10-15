@@ -82,11 +82,13 @@ def weightNames(namesByFrequency, index, total):
     return namesByFrequency
 
 def fetchBiography(name):
-    if "ALEX TREBEK" in " ".join(name):
+    name = " ".join(name)
+    print "Fetching bio for " + name
+    if "ALEX TREBEK" in name:
         return "Who is Alex Trebek?"
-    
+
     try:
-        return wikipedia.summary(" ".join(name), sentences = 3)
+        return wikipedia.summary(name, sentences = 2)
     except wikipedia.exceptions.DisambiguationError:
         return False
     

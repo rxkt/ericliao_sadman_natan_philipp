@@ -9,11 +9,19 @@ NUM_GOOGLE_RESULTS = 3
 def query(searchStr):
     # "Who played Chase" becomes ["WHO", "PLAYED", "CHASE"]
     wordsInQuery = [word.upper() for word in searchStr.split(" ")]
+    
     if len(wordsInQuery) >= 3:
-        if wordsInQuery[0] + wordsInQuery[1] == "WHOIS" or wordsInQuery[0] + wordsInQuery[1] == "WHOWAS":
+        if wordsInQuery[0] + wordsInQuery[1] == "WHOIS" or \
+                wordsInQuery[0] + wordsInQuery[1] == "WHOWAS" or  \
+                wordsInQuery[0] + wordsInQuery[1] == "WHATIS" or \
+                wordsInQuery[0] + wordsInQuery[1] == "WHATWAS":
             biography = searchHelper.fetchBiography(wordsInQuery[2:])
+
             if biography:
                 return biography
+
+    print wordsInQuery[0] + wordsInQuery[1]
+    print "Not fetching bio for " + " ".join(wordsInQuery)
 
     pages = getPages(searchStr)
     names = parsePages(pages, wordsInQuery)
