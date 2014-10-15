@@ -7,8 +7,6 @@ NUM_GOOGLE_RESULTS = 3
 
 # Main function
 def query(searchStr):
-    pages = getPages(searchStr)
-
     # "Who played Chase" becomes ["WHO", "PLAYED", "CHASE"]
     wordsInQuery = [word.upper() for word in searchStr.split(" ")]
     if len(wordsInQuery) >= 3:
@@ -17,6 +15,7 @@ def query(searchStr):
             if biography:
                 return biography
 
+    pages = getPages(searchStr)
     names = parsePages(pages, wordsInQuery)
     return searchHelper.mostCommon(names)
 

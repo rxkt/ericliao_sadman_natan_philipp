@@ -17,7 +17,7 @@
 	<button class = "grow search pure-button" type="submit" name="submit"><i class = "fa fa-search"></i> Search</button><br><br>
 	<!-- {{ resultsType }}<br>-->
     <p class="question">{{ searchStr }}</p>
-    <p class="answer {$ if results | length > 100 %} long-answer %}">{{ results }}</p>
+    <p class="answer {% if results | length > 100 %} long-answer %}">{{ results }}</p>
 	
 	</div>
       </form>

@@ -4,20 +4,30 @@
 
     <center> 
       <font size=32 color="salmon">
-	<p><h3>UBER COOL QUERY THING</h3></p>
+          <p><h3><a href="/">UBER COOL QUERY THING</a></h3></p>
       </font>
-      <form class="pure-form" method="get" action="/search">
+      <form class="pure-form home-search-bar" method="get" action="/search">
 
-	<input class="pure-input-rounded" type="text" size=40 name="query" placeholder="                  What would you like to know?" required></input><br><br>
+          <input class="pure-input-rounded search-bar" type="text" size=40 name="query" placeholder="                  What would you like to know?" required {% if searchStr is defined %} value="{{ searchStr }}" {% endif %} ></input>
 
-
-	<div>
-	  <style scoped></style>
-	<button class = "grow search pure-button" type="submit" name="submit"><i class = "fa fa-search"></i> Search</button><br><br>
-	<!-- if request.args.lucky exists-->
+    <button class = "grow search pure-button" type="submit" name="submit"><i class = "fa fa-search"></i> Search</button>
+    <br>
+    <br>
+    <label for="ajax-checkbox">Use AJAX </label>
+    <input type="checkbox" id="ajax-checkbox" name="ajax" value="yes" checked>
 	<!--<button class = "lucky pure-button" type="submit" name="submit"><i class = "fa fa-arrow-circle-up fa-spin"></i> Search  <i class = "fa fa-arrow-circle-up fa-spin"></i> </button>-->
-
-	</div>
-      </form>
+</form>
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+        <div class="results">
+            <p class="answer {% if results is defined and results | length > 100 %} long-answer {% endif %} ">
+            {% if results is defined %}
+                {{ results }}
+            {% endif %}
+           </p>
+        </div>
   </center>
 {% endblock %}
